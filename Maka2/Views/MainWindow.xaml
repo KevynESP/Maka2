@@ -74,11 +74,31 @@
                    Foreground="GreenYellow"
                    Margin="8,0,0,0"/>
 
+            <Grid Grid.Row="1" Background="Transparent" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="65"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label Content="IP:" Foreground="GreenYellow" FontWeight="SemiBold" Width="136"/>
+                    <Label x:Name="IpLocal" Content="" Foreground="GreenYellow" FontWeight="SemiBold" Opacity="0.7" FontStyle="Italic" Margin="0,0,0,0" Height="24" VerticalAlignment="Center"/>
+                    <TextBox Margin="0,0,0,0" Name="LocalIp" />
+                    <Label Content="Port:" Foreground="GreenYellow" FontWeight="SemiBold"/>
+                    <TextBox Margin="0,0,0,0" Name="LocalPort" />
 
-            <ListView Grid.Row="1"
-                      Background="Transparent"
-                      BorderThickness="0"
-                      ItemContainerStyle="{StaticResource ContactCard}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                    <Label Content="Remote Ip:" Foreground="GreenYellow" FontWeight="SemiBold"/>
+                    <Label x:Name="IpRemote" Content="" Foreground="GreenYellow" FontWeight="SemiBold" Opacity="0.7" FontStyle="Italic" Margin="0,0,0,0" Height="24" VerticalAlignment="Center"/>
+                    <TextBox Margin="0,0,0,0" Name="RemoteIp"  />
+                    <Label Content="Remote Port:" Foreground="GreenYellow" FontWeight="SemiBold"/>
+                    <TextBox Margin="0,0,0,0" Name="RemotePort"  />
+                </StackPanel>
+                <StackPanel Grid.Row="2" VerticalAlignment="Center">
+                    <Button x:Name="ConnectBtn" Height="40" Width="120" Content="Connect" Style="{StaticResource ConnectBtn}" Click="ConnectBtn_Click"/>
+                </StackPanel>
+            </Grid>
 
             <StackPanel Grid.Row="2"
                         Orientation="Horizontal"
@@ -101,7 +121,7 @@
                 </StackPanel>
 
             </StackPanel>
-            
+
         </Grid>
 
         <Grid Grid.Column="1"
@@ -127,12 +147,9 @@
                 </Grid>
             </Border>
 
-            <ListView
-                      Grid.Row="1"
-                      Background="Transparent"
-                      BorderThickness="0"
-                      Margin="8,0,0,0"
-                      ItemContainerStyle="{StaticResource ChatItem}"/>
+
+             <ListBox Grid.Row="1" x:Name="lMensajes" Background="Transparent" Foreground="GreenYellow"/>
+
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -140,17 +157,17 @@
                     <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Row="1"
+                <TextBox x:Name="TMensaje" Grid.Row="1"
                          Height="50"
-                         Text="Message @UserName"
-                         Grid.ColumnSpan="2"
-                         Style="{StaticResource MessageBox}"/>
+                         Grid.ColumnSpan="2" GotFocus="TMensaje_GotFocus"
+                         />
 
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Right"
                             Grid.Column="1"
                             Margin="0,0,16,0">
-                    <Image Height="20" Width="20" Source="./Icons/camera.png"/>
+                    <Button x:Name="EnviarBtn" Height="40" Width="80" Style="{StaticResource EnviarBtn}" Click="EnviarBtn_Click"/>
+
 
                 </StackPanel>
 
