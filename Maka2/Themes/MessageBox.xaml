@@ -20,6 +20,7 @@
                                      BorderThickness="0"
                                      Foreground="#2E2F2F"
                                      CaretBrush="GreenYellow"
+                                    
                                      Margin="8,0,0,0"
                                      Text="{Binding Message, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 <TextBox.InputBindings>
@@ -30,10 +31,14 @@
 
                             <TextBlock IsHitTestVisible="False"
                                        Text="Write down"
-                                       VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
-                                       Margin="10,0,0,0"
-                                       Foreground="DarkGray">
+                                       Foreground="DarkGray"
+                                       FontWeight="SemiBold"
+                                       Opacity="0.7"
+                                       FontStyle="Italic"
+                                       Margin="0,0,0,0"
+                                       Height="24"
+                                       VerticalAlignment="Center">
 
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">

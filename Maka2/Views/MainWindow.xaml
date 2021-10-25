@@ -63,7 +63,7 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition/>
+                <RowDefinition />
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
@@ -74,7 +74,7 @@
                    Foreground="GreenYellow"
                    Margin="8,0,0,0"/>
 
-            <Grid Grid.Row="1" Background="Transparent" HorizontalAlignment="Center">
+            <Grid Grid.Row="1" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="120"/>
                     <RowDefinition Height="120"/>
@@ -82,18 +82,16 @@
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Label Content="IP:" Foreground="GreenYellow" FontWeight="SemiBold" Width="136"/>
-                    <Label x:Name="IpLocal" Content="" Foreground="GreenYellow" FontWeight="SemiBold" Opacity="0.7" FontStyle="Italic" Margin="0,0,0,0" Height="24" VerticalAlignment="Center"/>
-                    <TextBox Margin="0,0,0,0" Name="LocalIp" />
+                    <TextBox x:Name="LocalIP" Text="{Binding Text, ElementName=LocalIP}" Margin="0,0,0,0" Uid="IPLocal" Style="{StaticResource ModernTextBoxUI}"/>
                     <Label Content="Port:" Foreground="GreenYellow" FontWeight="SemiBold"/>
-                    <TextBox Margin="0,0,0,0" Name="LocalPort" />
+                    <TextBox x:Name="LocalPort" Text="{Binding Text, ElementName=LocalPort}" Margin="0,0,0,0" Uid="PortLocal" Style="{StaticResource ModernTextBoxUI}"/>
 
                 </StackPanel>
-                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <StackPanel Visibility="Hidden" Grid.Row="1" VerticalAlignment="Center">
                     <Label Content="Remote Ip:" Foreground="GreenYellow" FontWeight="SemiBold"/>
-                    <Label x:Name="IpRemote" Content="" Foreground="GreenYellow" FontWeight="SemiBold" Opacity="0.7" FontStyle="Italic" Margin="0,0,0,0" Height="24" VerticalAlignment="Center"/>
-                    <TextBox Margin="0,0,0,0" Name="RemoteIp"  />
+                    <TextBox Margin="0,0,0,0" x:Name="RemoteIp" Uid="IpRemote" Style="{StaticResource ModernTextBoxUI}" />
                     <Label Content="Remote Port:" Foreground="GreenYellow" FontWeight="SemiBold"/>
-                    <TextBox Margin="0,0,0,0" Name="RemotePort"  />
+                    <TextBox Margin="0,0,0,0" Name="RemotePort" Uid="PortRemote" Style="{StaticResource ModernTextBoxUI}" />
                 </StackPanel>
                 <StackPanel Grid.Row="2" VerticalAlignment="Center">
                     <Button x:Name="ConnectBtn" Height="40" Width="120" Content="Connect" Style="{StaticResource ConnectBtn}" Click="ConnectBtn_Click"/>
@@ -102,22 +100,25 @@
 
             <StackPanel Grid.Row="2"
                         Orientation="Horizontal"
-                        Background="#252525">
+                        Background="#252525"
+                        >
                 <Border CornerRadius="25"
                         Width="30"
                         Height="30"
-                        Background="#2DA67F"
+                        Background="#A5130C"
                         Margin="18,0,0,0"/>
-                <StackPanel VerticalAlignment="Center">
-                    <Label Content="UserName"
+                <StackPanel VerticalAlignment="Center" Margin="0,12,0,0">
+                    <Label x:Name="IPLocal"
+                           Content="UserName"
                            Foreground="White"
                            FontWeight="SemiBold"
-                           Margin="0,-5,0,-5"/>
-                    <Label Content="Costum Status"
+                           Margin="0,0,0,0"/>
+                    <Label x:Name="PortLocal"
+                           Content="Costum Status"
                            Foreground="GreenYellow"
                            FontWeight="SemiBold"
                            FontSize="10"
-                           Margin="0,-8,0,-5"/>
+                           Margin="0,-12,0,0"/>
                 </StackPanel>
 
             </StackPanel>
@@ -148,7 +149,7 @@
             </Border>
 
 
-             <ListBox Grid.Row="1" x:Name="lMensajes" Background="Transparent" Foreground="GreenYellow"/>
+            <ListBox Grid.Row="1" x:Name="lMensajes" Background="Transparent" Foreground="GreenYellow" BorderThickness="0"/>
 
 
             <Grid Grid.Row="2">
@@ -157,10 +158,10 @@
                     <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox x:Name="TMensaje" Grid.Row="1"
-                         Height="50"
-                         Grid.ColumnSpan="2" GotFocus="TMensaje_GotFocus"
-                         />
+                <TextBox x:Name="TMensaje" Text="{Binding Text, ElementName=TMensaje}"
+                Uid="Write down"
+                IsEnabled="True"
+                Style="{StaticResource ModernTextBox}"/>
 
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Right"

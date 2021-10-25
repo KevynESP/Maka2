@@ -21,12 +21,12 @@
         <Border Background="#252525"
                 MouseDown="Border_MouseDown">
             <Grid HorizontalAlignment="Stretch">
-                
+
                 <Label Content="Maka Login" 
                    VerticalAlignment="Center" 
                    Foreground="GreenYellow" 
                    FontWeight="SemiBold"/>
-                
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Height="20" Width="20" Content="🗕"
                             Background="Transparent"
@@ -35,41 +35,43 @@
                             FontWeight="Bold"
                             Margin="0,0,0,3"
                             Click="Button_Click"/>
-                    
+
                     <Button Height="20" Width="20" Content="✕"
                             Background="Transparent"
                             BorderThickness="0" 
                             Foreground="GreenYellow"
                             FontWeight="Bold"
                             Click="ButtonClose_Click"/>
-                    
+
                 </StackPanel>
             </Grid>
-          
+
         </Border>
 
-        <Grid Grid.Row="1" Background="Transparent" HorizontalAlignment="Center">
+        <Grid Grid.Row="1" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Label Content="Username:" Foreground="GreenYellow" FontWeight="SemiBold"/>
-                <Label Content="Password:" Foreground="GreenYellow" FontWeight="SemiBold"/>
-                <Label Content="Repeat password:" Foreground="GreenYellow" FontWeight="SemiBold"/>
-            </StackPanel>
-            <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <TextBox Margin="0,0,0,5" Name="name" Style="{StaticResource MessageBox}"/>
-                <TextBox Margin="0,3,0,3" Name="pass" Style="{StaticResource MessageBox}"/>
-                <TextBox Margin="0,5,0,0" Name="rpass" Style="{StaticResource MessageBox}" />
-            </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="0" Content="Username:" Foreground="GreenYellow" FontWeight="SemiBold" Padding="0,8,0,8"/>
+            <Label VerticalAlignment="Center" Grid.Row="1" Content="Password:" Foreground="GreenYellow" FontWeight="SemiBold" Padding="0,8,0,8"/>
+            <Label x:Name="RPSW" VerticalAlignment="Center" Grid.Row="2" Content="Repeat password:" Foreground="GreenYellow" FontWeight="SemiBold" Padding="0,8,0,8"/>
+
+            <TextBox x:Name="UserName" Text="{Binding Text, ElementName=UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="0,0,0,5" Uid="Username" Style="{StaticResource ModernTextBoxUI}"/>
+            <TextBox x:Name="PassWord" Text="{Binding Text, ElementName=PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="0,3,0,3" Uid="password" Style="{StaticResource ModernTextBoxUI}"/>
+            <TextBox x:Name="RPassWord" Text="{Binding Text, ElementName=RPassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="0,5,0,0" Uid="Repeat Password" Style="{StaticResource ModernTextBoxUI}" />
+
         </Grid>
 
-        <Border Grid.Row="2" Background="#252525" >
-            <Button Style="{StaticResource ButtonReg}"
-                    Click="LogClick"
-                    Width="50"/>
+        <Border Grid.Row="2" Background="#252525">
+            <Button Style="{StaticResource RegisterButton}"
+                    Click="Registrarse" Margin="0,8,0,8" HorizontalAlignment="Center"/>
         </Border>
-        
+
     </Grid>
 </Window>

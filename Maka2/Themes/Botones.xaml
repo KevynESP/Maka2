@@ -1,0 +1,53 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="Button" x:Key="EnviarBtn">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="20"
+                            Background="#16BF66" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <Image Source="C:\Users\Kekon\source\repos\Maka2\Maka2\Icons\plane.png"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="ConnectBtn">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="8"
+                            Background="#2DA67F" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <Label Content="Conectarse" Foreground="AliceBlue"></Label>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="RegisterButton">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="8"
+                            Background="#2DA67F" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <Label Content="Registrarse" Foreground="AliceBlue"></Label>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

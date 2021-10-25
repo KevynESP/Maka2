@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,12 @@ namespace Maka2.Views
         public Window1()
         {
             InitializeComponent();
+            if (File.Exists(@"C:\Users\Kekon\Documents\clase\MakaPruebas\usuario.txt"))
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.ShowDialog();
+                this.Close();
+            }
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -37,9 +44,25 @@ namespace Maka2.Views
             this.WindowState = WindowState.Minimized;
         }
 
-        private void LogClick(object sender, RoutedEventArgs e)
+        private void Registrarse(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            if (PassWord.Text.Equals(RPassWord.Text))
+            {
+                if (!File.Exists(@"C:\Users\Kekon\Documents\clase\MakaPruebas\usuario.txt"))
+                {
+                    File.WriteAllText(@"C:\Users\Kekon\Documents\clase\MakaPruebas\usuario.txt", UserName.Text);
+                    File.WriteAllText(@"C:\Users\Kekon\Documents\clase\MakaPruebas\contraseña.txt", PassWord.Text);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.IPLocal.Content = File.ReadAllText(@"C:\Users\Kekon\Documents\clase\MakaPruebas\usuario.txt");
+                    mainWindow.ShowDialog();
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Las contraseñas no coinciden");
+            }
+            
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)

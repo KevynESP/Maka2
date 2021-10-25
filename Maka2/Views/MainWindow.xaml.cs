@@ -35,8 +35,8 @@ namespace Maka2
 
             TMensaje.Text = "Write down...";
 
-            IpLocal.Content = GetLocalIp();
-            IpRemote.Content = IPPublica();
+            //IPLocal.Content = GetLocalIp();
+            PortLocal.Content = IPPublica();
         }
 
         private string GetLocalIp()
@@ -94,7 +94,7 @@ namespace Maka2
             try
             {
                 //bind socket
-                epLocal = new IPEndPoint(IPAddress.Parse(LocalIp.Text.Trim()), Convert.ToInt32(LocalPort.Text.Trim()));
+                epLocal = new IPEndPoint(IPAddress.Parse(LocalIP.Text.Trim()), Convert.ToInt32(LocalPort.Text.Trim()));
                 socket.Bind(epLocal);
                 //Connect to remote
                 epRemote = new IPEndPoint(IPAddress.Parse(RemoteIp.Text.Trim()), Convert.ToInt32(RemotePort.Text.Trim()));
@@ -103,9 +103,9 @@ namespace Maka2
                 buffer = new byte[1500];
                 socket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -139,15 +139,23 @@ namespace Maka2
 
         private void EnviarBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Convert string byte
-            ASCIIEncoding aEncoding = new ASCIIEncoding();
-            byte[] sendingMessage = new byte[1500];
-            sendingMessage = aEncoding.GetBytes(TMensaje.Text);
-            //Send 
-            socket.Send(sendingMessage);
-            //add message
-            lMensajes.Items.Add(DateTime.Now.ToShortTimeString() + " Me: " + TMensaje.Text);
-            TMensaje.Text = "";
+            try
+            {
+                //Convert string byte
+                ASCIIEncoding aEncoding = new ASCIIEncoding();
+                byte[] sendingMessage = new byte[1500];
+                sendingMessage = aEncoding.GetBytes(TMensaje.Text);
+                //Send 
+                socket.Send(sendingMessage);
+                //add message
+                lMensajes.Items.Add(DateTime.Now.ToShortTimeString() + " Me: " + TMensaje.Text);
+                TMensaje.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
     }
